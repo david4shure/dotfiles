@@ -95,12 +95,18 @@
   (compile (concat "clisp " (buffer-name))))
 
 
+(defun perl-compile ()
+  "Use compile to run perl programs"
+  (interactive)
+  (save-buffer)
+  (message (pwd))
+  (compile (concat "perl " (buffer-name))))
+
 (setq compilation-scroll-output t)
 
 
 
 ;; compilation mode
-
 (add-hook 'python-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c C-c") 'python-compile)))
@@ -117,4 +123,19 @@
           (lambda ()
             (local-set-key (kbd "C-c C-c") 'clisp-compile)))
 
+(add-hook 'perl-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-c") 'perl-compile)))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (deeper-blue))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
